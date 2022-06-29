@@ -1,0 +1,35 @@
+openapi: "3.0.0"
+info:
+  version: 0.1.0
+  title: e-Tax interface
+  license:
+    name: Apache 2.0
+servers:
+  - url: http://anybank.ch/tax-statement
+paths:
+  /etax:
+    get:
+      summary: List of tax reports
+      operationId: listETaxes
+      responses:
+        '200':
+          description: List of tax reports
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/reportList"
+
+/etax/{reportId}:
+    get:
+      summary: Get a tax report
+      operationId: getETaxes
+      responses:
+        '200':
+          description: List of tax reports
+          content:      
+            application/pdf:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
